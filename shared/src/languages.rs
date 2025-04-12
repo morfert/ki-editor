@@ -36,6 +36,7 @@ pub const LANGUAGES: &[&Language] = &[
     &roc(),
     &ruby(),
     &rust(),
+    &svelte(),
     &sql(),
     &swift(),
     &toml(),
@@ -637,6 +638,25 @@ const fn rust() -> Language {
             id: "rust",
             url: "https://github.com/tree-sitter/tree-sitter-rust",
             commit: "e86119bdb4968b9799f6a014ca2401c178d54b5f",
+            subpath: None,
+        }),
+        ..Language::new()
+    }
+}
+
+const fn svelte() -> Language {
+    Language {
+        extensions: &["svelte"],
+        formatter_command: Some(Command("prettierd", &[".svelte"])),
+        lsp_command: Some(LspCommand {
+            command: Command("svelteserver", &["--stdio"]),
+            ..LspCommand::default()
+        }),
+        lsp_language_id: Some(LanguageId::new("svelte")),
+        tree_sitter_grammar_config: Some(GrammarConfig {
+            id: "svelte",
+            url: "https://github.com/tree-sitter-grammars/tree-sitter-svelte",
+            commit: "master",
             subpath: None,
         }),
         ..Language::new()
