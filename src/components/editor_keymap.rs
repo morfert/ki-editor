@@ -225,6 +225,13 @@ pub(crate) const WORKMAN: KeyboardLayout = [
     ["z", "x", "m", "c", "v", "k", "l", ",", ".", "/"],
 ];
 
+
+pub(crate) const CHARACHORDER_2: KeyboardLayout = [
+    [".", "v", "i", "r", ",", "y", "l", "p", "j", ";"],
+    ["m", "c", "k", "e", "o", "a", "f", "d", "h", "n"],
+    ["b", "g", "z", "w", "u", "/", "t", "x", "q", "s"],
+];
+
 struct KeySet {
     normal: HashMap<Meaning, &'static str>,
     shifted: HashMap<Meaning, &'static str>,
@@ -344,6 +351,7 @@ static COLEMAK_DH_SEMI_QUOTE_KEYSET: Lazy<KeySet> =
 static DVORAK_KEYSET: Lazy<KeySet> = Lazy::new(|| KeySet::from(DVORAK));
 static DVORAK_IU_KEYSET: Lazy<KeySet> = Lazy::new(|| KeySet::from(DVORAK_IU));
 static WORKMAN_KEYSET: Lazy<KeySet> = Lazy::new(|| KeySet::from(WORKMAN));
+static CHARACHORDER_2_KEYSET: Lazy<KeySet> = Lazy::new(|| KeySet::from(CHARACHORDER_2));
 
 #[derive(Debug, Clone, strum_macros::EnumIter, PartialEq, Eq)]
 pub(crate) enum KeyboardLayoutKind {
@@ -354,6 +362,7 @@ pub(crate) enum KeyboardLayoutKind {
     ColemakDH,
     ColemakDHSemiQuote,
     Workman,
+    Charachorder2,
 }
 
 impl KeyboardLayoutKind {
@@ -366,6 +375,7 @@ impl KeyboardLayoutKind {
             KeyboardLayoutKind::ColemakDHSemiQuote => "COLEMAK_DH_SEMI_QUOTE",
             KeyboardLayoutKind::DvorakIU => "DVORAK_IU",
             KeyboardLayoutKind::Workman => "WORKMAN",
+            KeyboardLayoutKind::Charachorder2 => "CHARACHORDER_2",
         }
     }
 
@@ -378,6 +388,7 @@ impl KeyboardLayoutKind {
             KeyboardLayoutKind::ColemakDHSemiQuote => "Colemak-DH Semi Quote",
             KeyboardLayoutKind::DvorakIU => "Dvorak IU",
             KeyboardLayoutKind::Workman => "Workman",
+            KeyboardLayoutKind::Charachorder2 => "Charachorder 2",
         }
     }
 
@@ -390,6 +401,7 @@ impl KeyboardLayoutKind {
             KeyboardLayoutKind::ColemakDHSemiQuote => &COLEMAK_DH_SEMI_QUOTE,
             KeyboardLayoutKind::DvorakIU => &DVORAK_IU,
             KeyboardLayoutKind::Workman => &WORKMAN,
+            KeyboardLayoutKind::Charachorder2 => &CHARACHORDER_2,
         }
     }
 
@@ -483,6 +495,7 @@ impl KeyboardLayoutKind {
             KeyboardLayoutKind::ColemakDHSemiQuote => &COLEMAK_DH_SEMI_QUOTE_KEYSET,
             KeyboardLayoutKind::DvorakIU => &DVORAK_IU_KEYSET,
             KeyboardLayoutKind::Workman => &WORKMAN_KEYSET,
+            KeyboardLayoutKind::Charachorder2 => &CHARACHORDER_2_KEYSET,
         }
     }
 }
